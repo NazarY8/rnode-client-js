@@ -1,12 +1,13 @@
 # RNode JS client examples
 
 See also recording of code walk-thru sessions:
- - [2020\-07\-28 RChain Education](https://youtu.be/5JEtt53EacI?t=1043)
- - [2020\-08\-25 RChain Education](https://www.youtube.com/watch?v=2EUd2vOiJX8)
+
+- [2020\-07\-28 RChain Education](https://youtu.be/5JEtt53EacI?t=1043)
+- [2020\-08\-25 RChain Education](https://www.youtube.com/watch?v=2EUd2vOiJX8)
 
 ## Web (HTTP)
 
-In the browser connection to RNode can be done with **RNode Web API**. It's also possible to use gRPC with the proxy.  
+In the browser connection to RNode can be done with **RNode Web API**. It's also possible to use gRPC with the proxy.
 Web API has only defined schema in Scala source, for the new info please check [RChain issue 2974](https://github.com/rchain/rchain/issues/2974).
 
 <details>
@@ -19,6 +20,7 @@ npm install && docker-compose up -d && npm run start:web
 # Logs from all nodes
 docker-compose logs -f
 ```
+
 </details>
 
 Web example is published from `gh-pages` branch on this url [https://tgrospic.github.io/rnode-client-js](https://tgrospic.github.io/rnode-client-js).
@@ -32,10 +34,10 @@ This repo contains examples how to use [**@tgrospic/rnode-grpc-js**](https://git
 RNode has support for Ethereum type of signatures so Metamask can be used for signing deploys e.g. making transfers of REVs. In Web example, button to add selected Metamask account should be visible next to REV import textbox.
 
 Helper functions are in [eth-wrapper.js](src/eth/eth-wrapper.js) which contains the code for communication with Metamask, getting selected ETH address and sending deploys for signing.
-In [eth-sign.js](src/eth/eth-sign.js) are functions to verify deploy signature and to extract public key.  
+In [eth-sign.js](src/eth/eth-sign.js) are functions to verify deploy signature and to extract public key.
 This is all that is needed for communication with Metamask and also for connected hardware wallets (Ledger). How to use these functions and send deploys to RNode is in [rnode-web.js](src/rnode-web.js).
 
-Changes on the web page are only saved in memory so it will be lost after refreshing the page.  
+Changes on the web page are only saved in memory so it will be lost after refreshing the page.
 RChain networks available for selection are in [rchain-networks.js](src/rchain-networks.js) file.
 
 ## Install
@@ -96,7 +98,7 @@ docker-compose logs -f
 
 Web site can be compiled to static page which can be opened with double click on `index.html` in `./dist` directory where the page is built. This is exactly what we need for offline wallet. :)
 
-Because it's a static page it can be published directly on Github via `gh-pages` branch which contains compiled files from `./dist` directory. It is visible on this url [https://tgrospic.github.io/rnode-client-js](https://tgrospic.github.io/rnode-client-js). If you fork this repo you can do this with you own version of app.  
+Because it's a static page it can be published directly on Github via `gh-pages` branch which contains compiled files from `./dist` directory. It is visible on this url [https://tgrospic.github.io/rnode-client-js](https://tgrospic.github.io/rnode-client-js). If you fork this repo you can do this with you own version of app.
 With [GitHub pages action](.github/workflows/github-pages.yml) any commit to _master_ branch will rebuild and publish the page. Locally the page can be generated with _build_ command.
 
 ```sh
@@ -113,3 +115,21 @@ npm run build:web
 ```
 
 ![](docs/intellisense-vscode.png)
+
+
+
+## How to communicate with f1r3fly
+
+
+The first thing to say, at the moment, only part of this application is updated, namely Client.js - which shows how we can communicate with F1r3Fly.
+
+Do the next steps:
+
+
+1. cd to rnode-client-js
+2. npm install
+3. cd to libs/rnode-grpc-gen
+4. npm run build
+5. cd ../..
+6. npm run rnode-generate
+7. npm run start:nodejs (client.js runner)

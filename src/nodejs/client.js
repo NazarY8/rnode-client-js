@@ -16,14 +16,14 @@ require('../../rnode-grpc-gen/js/ProposeServiceV1_pb')
 const { log, warn } = console
 const util = require('util')
 
-const sampleRholangCode = `300`//create//update
+const sampleRholangCode = `1110`//create//update
 
-const rnodeExternalUrl = 'localhost:40401'
-//const rnodeExternalUrl = '146.235.215.215:30001' //dev env
+//const rnodeExternalUrl = 'localhost:40401'
+const rnodeExternalUrl = '146.235.215.215:30001' //dev env
 // const rnodeExternalUrl = 'node3.testnet.rchain.coop:40401'
 
-const rnodeInternalUrl = 'localhost:40402'
-//const rnodeInternalUrl = '146.235.215.215:30002' //dev env
+//const rnodeInternalUrl = 'localhost:40402'
+const rnodeInternalUrl = '146.235.215.215:30002' //dev env
 const rnodeExample = async () => {
   // Get RNode service methods
   const options = host => ({grpcLib: grpc, host, protoSchema})
