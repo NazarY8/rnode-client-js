@@ -61,13 +61,6 @@ const rnodeExample = async () => {
   const isValidDeploy = verifyDeploy(deploy)
   log('✅ DEPLOY IS VALID', isValidDeploy)
 
-  console.log("СТАРИЙ deployer:", deployData.deployer);
-  console.log("СТАРИЙ sig:", deployData.sig);
-  console.log("📤 Перед відправкою (старий клієнт):", JSON.stringify(deploy, null, 2));
-
-  console.log("🟢 СТАРИЙ КЛІЄНТ - gRPC ВИКЛИК `doDeploy`");
-  console.log("📤 Параметри:", JSON.stringify(deploy, null, 2));
-
   const {result} = await doDeploy(deploy)
   log('✅ DEPLOY RESPONSE', result)
 
