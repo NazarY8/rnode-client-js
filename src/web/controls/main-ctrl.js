@@ -1,7 +1,7 @@
 // @ts-check
 import * as R from 'ramda'
 import m from 'mithril'
-import { localNet, testNet, mainNet, getNodeUrls } from '../../rchain-networks'
+import { localNet, testNet, mainNet, getNodeUrls } from '../../rnode-networks'
 import { ethDetected } from '../../eth/eth-wrapper'
 import { makeRenderer } from './common'
 
@@ -11,8 +11,7 @@ import { addressCtrl } from './address-ctrl'
 import { balanceCtrl } from './balance-ctrl'
 import { transferCtrl } from './transfer-ctrl'
 import { customDeployCtrl } from './custom-deploy-ctrl'
-// import { newRevAddress } from '@tgrospic/rnode-grpc-js'
-import { newRevAddress } from '../../libs/rnode-grpc-js/dist/rnode-grpc'
+import { newRevAddress } from '@tgrospic/rnode-grpc-js'
 
 /*
   This will display the test page to select local, testnet, and mainnet validators
@@ -130,7 +129,8 @@ const prepareNets = nets =>
 
 const devMode      = false
 const netsDev      = prepareNets([localNet])
-const netsTestMain = prepareNets([testNet, mainNet])
+// const netsTestMain = prepareNets([testNet, mainNet])
+const netsTestMain = prepareNets([testNet])
 const nets         = devMode ? netsDev : netsTestMain
 const initNet      = nets[0]
 

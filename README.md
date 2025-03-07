@@ -38,7 +38,7 @@ In [eth-sign.js](src/eth/eth-sign.js) are functions to verify deploy signature a
 This is all that is needed for communication with Metamask and also for connected hardware wallets (Ledger). How to use these functions and send deploys to RNode is in [rnode-web.js](src/rnode-web.js).
 
 Changes on the web page are only saved in memory so it will be lost after refreshing the page.
-RChain networks available for selection are in [rchain-networks.js](src/rchain-networks.js) file.
+F1r3fly networks available for selection are in [rnode-networks.js](src/rnode-networks.js) file.
 
 ## Install
 
@@ -78,13 +78,13 @@ npm run start:web
 In `src/nodejs/client.js` script is an example of how to connect to RNode from Nodejs.
 
 ```sh
-# Run nodejs example / sample requests to RChain testnet
+# Run nodejs example / sample requests to F1r3fly testnet
 npm run start:nodejs
 ```
 
 ## Run RNode with Docker
 
-In the project is [Docker compose](docker-compose.yml) configuration to run local RChain network.
+In the project is [Docker compose](docker-compose.yml) configuration to run local F1r3fly network.
 
 ```sh
 # Starts validator and read-only RNode in daemon mode

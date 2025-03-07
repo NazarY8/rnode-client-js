@@ -250,7 +250,7 @@ const deployBytes = DeployDataProto.serialize({ term: 'Nil', phlolimit: 1000 })
 const deployObj: DeployDataProto = DeployDataProto.deserialize(deployBytes)
 ```
 
-## What is the difference with RChain-API?
+## What is the difference with F1r3fly-API?
 
 The main difference is that this library does not depend on any specific version of RNode nor the schema definition (with minor caveats). RNode version is an input parameter and the goal is to generate JS and TS code for any RNode version.
 
