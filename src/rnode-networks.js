@@ -1,6 +1,9 @@
 // @ts-check
-const defaultPorts    = { grpc: 40401, http: 40403, httpAdmin: 40405 }
-const defaultPortsSSL = { grpc: 40401, https: 443, httpAdmin: 40405 }
+const defaultLocalPorts    = { grpc: 40401, http: 40403, httpAdmin: 40405 }
+const defaultLocalPortsSSL = { grpc: 40401, https: 443, httpAdmin: 40405 }
+
+const defaultRemotePorts    = { grpc: 30001, http: 30003, httpAdmin: 30005 }
+const defaultRemotePortsSSL = { grpc: 30001, https: 443, httpAdmin: 30005 }
 
 // Shard IDs
 const defaultShardId = 'root'
@@ -20,20 +23,12 @@ export const localNet = {
   tokenName,
   tokenDecimal: defautTokenDecimal,
   hosts: [
-    { domain: 'localhost', shardId: defaultShardId, ...defaultPorts },
+    { domain: 'localhost', shardId: defaultShardId, ...defaultLocalPorts },
     { domain: 'localhost', shardId: defaultShardId, grpc: 40411, http: 40413, httpAdmin: 40415 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40421, http: 40423, httpAdmin: 40425 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40431, http: 40433, httpAdmin: 40435 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40441, http: 40443, httpAdmin: 40445 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40451, http: 40453, httpAdmin: 40455 },
   ],
   readOnlys: [
-    { domain: 'localhost', shardId: defaultShardId, ...defaultPorts },
+    { domain: 'localhost', shardId: defaultShardId, ...defaultLocalPorts },
     { domain: 'localhost', shardId: defaultShardId, grpc: 40411, http: 40413, httpAdmin: 40415 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40421, http: 40423, httpAdmin: 40425 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40431, http: 40433, httpAdmin: 40435 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40441, http: 40443, httpAdmin: 40445 },
-    { domain: 'localhost', shardId: defaultShardId, grpc: 40451, http: 40453, httpAdmin: 40455 },
   ]
 }
 
@@ -44,48 +39,47 @@ const range = n => [...Array(n).keys()]
 const getTestNetUrls = n => {
   const instance = `node${n}`
   return {
-    domain: `${instance}.testnet.rchain.coop`,
+    domain: `146.235.215.215`,
     instance,
     shardId: testNetShardId,
-    ...defaultPortsSSL,
+    ...defaultRemotePortsSSL,
   }
 }
 
-const testnetHosts = range(5).map(getTestNetUrls)
+const testnetHosts = range(1).map(getTestNetUrls)
 
 export const testNet = {
-  title: 'RChain testing network',
+  title: 'F1r3fly testing network',
   name: 'testnet',
   tokenName,
   tokenDecimal: defautTokenDecimal,
   hosts: testnetHosts,
   readOnlys: [
-    { domain: 'observer.testnet.rchain.coop', instance: 'observer', shardId: testNetShardId, ...defaultPortsSSL },
+    { domain: '146.235.215.215', instance: 'observer', shardId: testNetShardId, ...defaultRemotePortsSSL },
   ],
 }
 
 // MAIN network
 
 const getMainNetUrls = n => ({
-  domain: `node${n}.root-shard.mainnet.rchain.coop`,
+  domain: `146.235.215.215`,
   shardId: mainNetShardId,
-  ...defaultPortsSSL,
+  ...defaultRemotePortsSSL,
 })
 
-const mainnetHosts = range(30).map(getMainNetUrls)
+const mainnetHosts = range(1).map(getMainNetUrls)
 
+// TODO: not used until mainnet is not deployed
 export const mainNet = {
-  title: 'RChain MAIN network',
+  title: 'F1r3fly MAIN network',
   name: 'mainnet',
   tokenName,
   tokenDecimal: defautTokenDecimal,
   hosts: mainnetHosts,
   readOnlys: [
     // Load balancer (not gRPC) server for us, asia and eu servers
-    { domain: 'observer.services.mainnet.rchain.coop', shardId: mainNetShardId, https: 443 },
-    { domain: 'observer-us.services.mainnet.rchain.coop', shardId: mainNetShardId, ...defaultPortsSSL },
-    { domain: 'observer-asia.services.mainnet.rchain.coop', shardId: mainNetShardId, ...defaultPortsSSL },
-    { domain: 'observer-eu.services.mainnet.rchain.coop', shardId: mainNetShardId, ...defaultPortsSSL },
+    { domain: 'dev', shardId: mainNetShardId, https: 443 },
+    { domain: 'dev', shardId: mainNetShardId, ...defaultRemotePortsSSL },
   ],
 }
 

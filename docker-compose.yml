@@ -6,7 +6,7 @@ x-rnode:
   user: root
   restart: always
   networks:
-  - rchain-net
+  - f1r3fly-net
 
 services:
 
@@ -45,4 +45,4 @@ services:
     - $MY_NET_IP:40414:40414
 
 networks:
-  rchain-net:
+  f1r3fly-net:

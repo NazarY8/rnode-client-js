@@ -18,12 +18,12 @@ const util = require('util')
 
 const sampleRholangCode = `1110`//create//update
 
-//const rnodeExternalUrl = 'localhost:40401'
-const rnodeExternalUrl = '146.235.215.215:30001' //dev env
+const rnodeExternalUrl = 'localhost:40401'
+// const rnodeExternalUrl = '146.235.215.215:30001' //dev env
 // const rnodeExternalUrl = 'node3.testnet.rchain.coop:40401'
 
-//const rnodeInternalUrl = 'localhost:40402'
-const rnodeInternalUrl = '146.235.215.215:30002' //dev env
+const rnodeInternalUrl = 'localhost:40402'
+// const rnodeInternalUrl = '146.235.215.215:30002' //dev env
 const rnodeExample = async () => {
   // Get RNode service methods
   const options = host => ({grpcLib: grpc, host, protoSchema})
@@ -45,8 +45,7 @@ const rnodeExample = async () => {
   log('BLOCKS', blocks)
 
   const secp256k1 = new ec('secp256k1')
-  // const key = secp256k1.genKeyPair()
-  const key = '8ab5c1770369e6a522285a908a345d93c4af3c2042c4679fc5b62f3d70a9af3b'
+  const key = secp256k1.genKeyPair()
   const deployData = {
     term: sampleRholangCode,
     timestamp: 0,

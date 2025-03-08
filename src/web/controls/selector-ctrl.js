@@ -1,7 +1,7 @@
 // @ts-check
 import * as R from 'ramda'
 import m from 'mithril'
-import { getNodeUrls } from '../../rchain-networks'
+import { getNodeUrls } from '../../rnode-networks'
 
 export const selectorCtrl = (st, {nets, onDevMode}) => {
   const findValidatorByIndex = index =>
@@ -48,7 +48,7 @@ export const selectorCtrl = (st, {nets, onDevMode}) => {
 
   return m('.ctrl.selector-ctrl',
     // Validator selector
-    m('h2', 'RChain Network selector'),
+    m('h2', 'F1r3fly Network selector'),
     // Dev mode switch
     m('label', {title: devModeText},
       m('input[type=checkbox]', {checked: devMode, oninput: onDevModeInput}), 'dev mode'),
@@ -81,7 +81,7 @@ export const selectorCtrl = (st, {nets, onDevMode}) => {
       isLocal && m('tr', m('td', 'Admin'), m('td', m('pre', valUrls.httpAdminUrl))),
     ),
     isMainnet && [
-      m('p.warning', `You are connected to MAIN RChain network. Any deploy will use REAL ${valUrls.tokenName}s.`),
+      m('p.warning', `You are connected to MAIN F1r3fly network. Any deploy will use REAL ${valUrls.tokenName}s.`),
     ],
 
     // Read-only selector

@@ -8,7 +8,7 @@ import { generateTs } from './typings'
 import { mapAsync, chainAsync, waitExit, then, filterAsync } from '../lib'
 
 // Relative location of directories where protobuf files are located
-// in RChain main repository https://github.com/rchain/rchain
+// in F1r3fly main repository https://github.com/F1R3FLY-io/f1r3fly
 // const rchainProtoDirs = ['models/src/main/protobuf', 'node/src/main/protobuf']
 const rchainProtoDirs = ['models/src/main/protobuf'];
 
@@ -53,7 +53,7 @@ const generateJsonPb = async ({jsPath, protoFiles, npmBin}) => {
 }
 
 /**
- * Run RChain client gRPC/protobuf API generator.
+ * Run F1r3fly client gRPC/protobuf API generator.
  *
  * - download protobuf definition files from GitHub rchain/rchain
  * - generate JS bindings (grpc-tools)
@@ -95,7 +95,7 @@ export const run = async ({args, cwd, npmBin}) => {
   const protoDownload = ({name, download_url}) =>
     ({ downloadUrl: download_url, filePath: path.resolve(protoPath, name) })
 
-  // Additional proto file not in RChain repo
+  // Additional proto file not in F1r3fly repo
   const scalapbDownload = {
     downloadUrl: 'https://raw.githubusercontent.com/scalapb/ScalaPB/master/protobuf/scalapb/scalapb.proto',
     filePath: path.resolve(scalapbPath, 'scalapb.proto'),

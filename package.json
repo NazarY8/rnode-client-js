@@ -6,6 +6,9 @@
   "license": "MIT",
   "scripts": {
     "start:nodejs": "node src/nodejs/client",
+    "start:nodejs:insert-signed": "node src/nodejs/client-insert-signed.js",
+    "start:nodejs:repl": "node src/nodejs/client-read.js",
+    "start:nodejs:read": "node src/nodejs/client-read",
     "start:web": "parcel src/web/index.html",
     "build:web": "npm-run-all clean build",
     "build": "parcel build --public-url ./ src/web/index.html",
@@ -26,7 +29,7 @@
     "mithril": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "ramda": "^0.27.1",
-    "rnode-grpc-js": "file:libs/rnode-grpc-js"
+    "@tgrospic/rnode-grpc-js": "file:libs/rnode-grpc-js"
   },
   "devDependencies": {
     "@parcel/transformer-less": "^2.1.1",
